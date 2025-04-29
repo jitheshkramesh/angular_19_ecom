@@ -13,12 +13,19 @@ export class CartComponent {
   cartService = inject(CartService);
   total = this.cartService.getTotalPrice();
 
-  ngOnInit() {
-    const user = this.cartService.getCart();
-    console.log('User on init:', user);
+  ngOnInit() {  
+    // Load cart from local storage if available
+    const storedCart = this.cartService.cart();
+    if (storedCart.length > 0) {
+      this.cartService.cart.set(storedCart);
+    } else {
+      console.log('No items in cart');
+    }
+    // Set up a subscription to update the total price whenever the cart changes  
   }
+  
   ngOnDestroy() {
-    this.cartService.setCart(this.cartService.cart());
+    this.cartService.cart().forEach(product => this.cartService.setCart(product));
     console.log('Cart saved to local storage:', this.cartService.cart());
     this.cartService.cart.set([]);
   }
