@@ -1,11 +1,15 @@
 import { Injectable,signal } from '@angular/core';
 import { Product } from '../products/products.module'; 
+import { signalStore, withState } from '@ngrx/signals';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {  
 
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+  
   getTotalPrice() {
     //total price of the cart
     return this.cart().reduce((total, product) => total + product.price, 0);

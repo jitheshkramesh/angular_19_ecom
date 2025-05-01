@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Product } from '../../products/products.module';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { title } from 'process';
+import { ProductCardComponent } from './product-card/product-card.component'; 
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-products-list',
@@ -10,8 +10,11 @@ import { title } from 'process';
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent {
-
-  async ngOnInit() {
+ 
+  
+  async ngOnInit() {  
+ 
+    
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
     this.products.set(data.map((item: any) => ({
@@ -23,6 +26,7 @@ export class ProductsListComponent {
     })));
   }
 
+  cartService = inject(CartService);
   products = signal<Product[]>([]);
   // Uncomment the following lines to use hardcoded products instead of fetching from API 
 
