@@ -5,7 +5,13 @@ import { LoginComponent } from './components/login/login.component';
 export const routes: Routes = [{
     path: '', pathMatch: 'full',
     loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent)
-}, {
+}, 
+{
+    path: 'movies-list',
+    loadComponent: () => import('./pages/moviesearch/moviesearch.component')
+        .then(m => m.MoviesearchComponent)
+},
+{
     path: 'products-list',
     loadComponent: () => import('./pages/products-list/products-list.component')
         .then(m => m.ProductsListComponent)
