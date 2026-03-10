@@ -34,9 +34,18 @@ export class MoviesearchComponent implements OnInit {
 
   searchMovies(){
     // search for movies based on the search term
-    this.getMovieService().getData(this.searchTerm).subscribe((data) => {
+    this.getMovieService().getData(this.searchTerm).subscribe({
+      next: (data) => {
       console.log('data:', data);
       this.moviesData = data;
+    },
+    error: (err) => {
+      console.log('Error:', err);
+
+      if (err.status === 404) {
+        this.moviesData = []; 
+      }
+    }
     }
     );  
   }
