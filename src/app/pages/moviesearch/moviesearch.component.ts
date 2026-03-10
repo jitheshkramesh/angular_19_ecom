@@ -1,4 +1,4 @@
-import { Component, inject, Injector } from '@angular/core';
+import { Component, inject, Injector, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
@@ -9,9 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './moviesearch.component.html',
   styleUrl: './moviesearch.component.scss'
 })
-export class MoviesearchComponent {
+export class MoviesearchComponent implements OnInit {
 
-  searchTerm = 'a';
+  searchTerm = '';
   moviesData: any[] = [];
 
   // ERROR NullInjectorError: R3InjectorError(Standalone[_MoviesearchComponent])[_MovieService -> _MovieService -> _HttpClient -> _HttpClient]: 
@@ -20,6 +20,9 @@ export class MoviesearchComponent {
   private movieService: MovieService | undefined;
 
   constructor(private injector: Injector) {}
+  ngOnInit(): void {
+   this.searchMovies();
+  }
 
   private getMovieService(): MovieService {
     if (!this.movieService) {
