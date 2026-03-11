@@ -28,6 +28,9 @@ export const routes: Routes = [{
     path: 'signal-search', loadComponent: () => import('./pages/signal-search/signal-search.component').then(m => m.SignalSearchComponent)
 },
 {
+    path: 'subscribe-form', loadComponent: () => import('./pages/subscribe-form/subscribe-form.component').then(m => m.SubscribeFormComponent)
+},
+{
     path: 'content', loadComponent: () => import('./shared/components/layout/layout.component')
         .then(m => m.LayoutComponent), children: [
             {
