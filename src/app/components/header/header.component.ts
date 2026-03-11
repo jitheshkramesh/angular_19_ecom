@@ -4,11 +4,11 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
 import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
-  imports: [PrimaryButtonComponent, RouterLink,CommonModule],
+  imports: [PrimaryButtonComponent, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

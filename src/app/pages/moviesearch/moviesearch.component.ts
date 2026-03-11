@@ -1,11 +1,11 @@
 import { Component, inject, Injector, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
+ 
 
 @Component({
   selector: 'app-moviesearch',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule],
   templateUrl: './moviesearch.component.html',
   styleUrl: './moviesearch.component.scss'
 })
@@ -30,7 +30,6 @@ export class MoviesearchComponent implements OnInit {
     }
     return this.movieService;
   }
-
 
   searchMovies(){
     // search for movies based on the search term

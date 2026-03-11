@@ -22,6 +22,12 @@ export const routes: Routes = [{
     path: 'login', loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent)
 },
 {
+    path: 'user-posts', loadComponent: () => import('./user-posts/user-posts.component').then(m => m.UserPostsComponent)
+},
+{
+    path: 'signal-search', loadComponent: () => import('./pages/signal-search/signal-search.component').then(m => m.SignalSearchComponent)
+},
+{
     path: 'content', loadComponent: () => import('./shared/components/layout/layout.component')
         .then(m => m.LayoutComponent), children: [
             {
