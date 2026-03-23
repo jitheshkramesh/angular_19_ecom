@@ -31,6 +31,9 @@ export const routes: Routes = [{
     path: 'subscribe-form', loadComponent: () => import('./pages/subscribe-form/subscribe-form.component').then(m => m.SubscribeFormComponent)
 },
 {
+    path: 'tic-tac-toe', loadComponent: () => import('./tic-tac-toe/tic-tac-toe.component').then(m => m.TicTacToeComponent)
+},
+{
     path: 'content', loadComponent: () => import('./shared/components/layout/layout.component')
         .then(m => m.LayoutComponent), children: [
             {

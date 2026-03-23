@@ -12,7 +12,7 @@ export class CartRefreshService {
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {
       if (isPlatformBrowser(this.platformId)) {
         // const stored = localStorage.getItem('cartitems');
-        let stored = null;
+        let stored: string | null = null;
         if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
           // Safe to use localStorage
           stored = localStorage.getItem(this.localStorageKey);
@@ -40,7 +40,7 @@ export class CartRefreshService {
     cartre = signal<Product[]>([]);
   
     private loadCart(): Product[] | null {
-      let stored = null;
+      let stored: string | null =  null;
       if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
         // Safe to use localStorage
         stored = localStorage.getItem(this.localStorageKey);

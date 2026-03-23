@@ -1,0 +1,39 @@
+<div class="game-container">
+
+  <h2>Tic Tac Toe</h2>
+
+  <!-- Status -->
+  @if (!winner && !isDraw) {
+    <p>
+      Current Player: {{ currentPlayer }}
+    </p>
+  }
+
+  @if (winner) {
+    <p class="winner">
+      Winner: {{ winner }} 🎉
+    </p>
+  }
+
+  @if (isDraw) {
+    <p class="draw">
+      It's a Draw!
+    </p>
+  }
+
+  <!-- Board -->
+  <div class="board">
+    @for (cell of board; track $index) {
+      <div 
+        class="cell"
+        (click)="onCellClick($index)"
+      >
+        {{ cell }}
+      </div>
+    }
+  </div>
+
+  <!-- Reset -->
+  <button (click)="resetGame()">Restart Game</button>
+
+</div>
