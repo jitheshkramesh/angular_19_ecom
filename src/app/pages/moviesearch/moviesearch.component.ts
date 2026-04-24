@@ -1,7 +1,7 @@
 import { Component, inject, Injector, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { FormsModule } from '@angular/forms';
- 
+
 
 @Component({
   selector: 'app-moviesearch',
@@ -19,9 +19,9 @@ export class MoviesearchComponent implements OnInit {
 
   private movieService: MovieService | undefined;
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) { }
   ngOnInit(): void {
-   this.searchMovies();
+    this.searchMovies();
   }
 
   private getMovieService(): MovieService {
@@ -31,21 +31,21 @@ export class MoviesearchComponent implements OnInit {
     return this.movieService;
   }
 
-  searchMovies(){
+  searchMovies() {
     // search for movies based on the search term
     this.getMovieService().getData(this.searchTerm).subscribe({
       next: (data) => {
-      console.log('data:', data);
-      this.moviesData = data;
-    },
-    error: (err) => {
-      console.log('Error:', err);
+        console.log('data:', data);
+        this.moviesData = data;
+      },
+      error: (err) => {
+        console.log('Error:', err);
 
-      if (err.status === 404) {
-        this.moviesData = []; 
+        if (err.status === 404) {
+          this.moviesData = [];
+        }
       }
     }
-    }
-    );  
-  }
+    );
+  } 
 }

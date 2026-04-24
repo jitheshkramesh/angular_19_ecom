@@ -6,7 +6,7 @@
 <div class="flex flex-col gap-4 mt-4">
   <h2>Search Results:</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    @for (movie of moviesData; track movie) {
+    @for (movie of moviesData; track $index) {
       <div class="border p-4 rounded shadow-md">
         <h3 class="text-lg font-semibold">{{movie.movieTitle}}</h3>
         <p>Director: {{movie.directorName}}</p>
