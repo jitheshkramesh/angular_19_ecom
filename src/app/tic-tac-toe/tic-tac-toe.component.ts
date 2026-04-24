@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -7,15 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './tic-tac-toe.component.scss',
 })
 export class TicTacToeComponent {
-board: string[] = Array(9).fill('');
+  board: string[] = Array(9).fill('');
   currentPlayer: 'X' | 'O' = 'X';
   winner: string | null = null;
   isDraw: boolean = false;
 
   winPatterns: number[][] = [
-    [0,1,2], [3,4,5], [6,7,8],
-    [0,3,6], [1,4,7], [2,5,8],
-    [0,4,8], [2,4,6]
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
   ];
 
   onCellClick(index: number) {
@@ -54,4 +54,28 @@ board: string[] = Array(9).fill('');
     this.winner = null;
     this.isDraw = false;
   }
+
+  time = signal(0);
+  interval: any;
+
+  // constructor() {
+  //   setInterval(() => {
+  //     this.time.update(t => t + 1);
+  //   }, 1000);
+  // }
+
+  start() {
+    this.interval = setInterval(() => {
+      this.time.update(t => t + 1);
+    }, 1000);
+  }
+
+  stop() {
+    clearInterval(this.interval);
+  }
+
+  reset() {
+    this.time.set(0);
+  }
+
 }

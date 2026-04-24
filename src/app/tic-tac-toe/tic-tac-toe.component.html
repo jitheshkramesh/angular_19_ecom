@@ -37,3 +37,12 @@
   <button (click)="resetGame()">Restart Game</button>
 
 </div>
+
+<div class="text-center mt-10">
+  <h1 class="text-4xl font-bold">{{ time()}}s</h1>
+  <div class="mt-4 flex justify-center gap-3">
+    <button class="bg-green-500 px-4 py-2 text-white" (click)="start()">Start Timer</button>
+    <button class="bg-yellow-500 px-4 py-2 text-white" (click)="stop()">Stop Timer</button>
+    <button class="bg-red-500 px-4 py-2 text-white" (click)="reset()">Reset Timer</button>
+  </div>
+</div>
